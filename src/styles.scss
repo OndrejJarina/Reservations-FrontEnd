@@ -1,0 +1,27 @@
+$color_bg: #0c6eb3;
+$color_sell: #3a85bd;
+.topbar {
+  nav {
+    background-color: $color_bg;
+    z-index: 30;
+
+  }
+}
+
+@media (min-width: 1000px) {
+  .topbar {
+    nav {
+      width: 75vw;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}
+
+.seller-btn {
+  background-color: $color_sell;
+}
+
+p {
+  position: relative;
+}
