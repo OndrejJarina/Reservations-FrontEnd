@@ -1,12 +1,11 @@
 <div class="container-lg">
-  <div class="topbar">
+  <div class="topbar mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark rounded-bottom position-fixed fixed-top">
       <a class="navbar-brand" href="#">Ticket Reservation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
               aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span>
       </button>
-
       <div class="collapse navbar-collapse text-center" id="navbarToggle">
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
           <li class="nav-item">
@@ -24,9 +23,76 @@
       </div>
     </nav>
   </div>
-  <div class="row">
-    <div class="col-12">
+
+  <div class="row ">
+    <div class="col-xs-12 col-lg-12 pt-5">
+
       <router-outlet></router-outlet>
     </div>
   </div>
+
+
+</div>
+<div class="container col-9">
+  <!-- Footer -->
+  <footer class="page-footer font-small blue pt-4 sticky-bottom rounded-top">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h6 class="text-uppercase">Footer Content</h6>
+          <p>Here you can use rows and columns to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h6 class="text-uppercase">Social Networks</h6>
+
+          <ul class="list-inline ">
+            <li class="list-inline-item">
+              <a class="text-dark fa fa-facebook-square" href="#!"></a>
+            </li>
+            <li class="list-inline-item">
+              <a class="text-dark fa fa-twitter-square" href="#!"></a>
+            </li>
+            <li class="list-inline-item">
+              <a class="text-dark fa fa-instagram" href="#!"></a>
+            </li>
+            <li class="list-inline-item">
+              <a class="text-dark fa fa-vk" href="#!"></a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Ondrej Jarina
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
 </div>

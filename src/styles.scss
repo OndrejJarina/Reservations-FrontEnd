@@ -7,11 +7,14 @@ $color_sell: #3a85bd;
 
   }
 }
+footer{
+  background-color: $color_sell;
+}
 
 @media (min-width: 1000px) {
   .topbar {
     nav {
-      width: 75vw;
+      width: 74vw;
       left: 50%;
       transform: translate(-50%, 0);
     }
