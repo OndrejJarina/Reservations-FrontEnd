@@ -3,12 +3,14 @@
   background-position-y: 20px;
 }
 
+#carouselHome{
+  transform: translate(-50,0);
+}
 @media (min-width: 992px) {
   .carousel-item {
-    max-width: 60vw;
+    max-width: 100vw;
     height: 30vw;
     background-size: cover;
-
   }
 }
 
