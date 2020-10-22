@@ -1,11 +1,26 @@
 $color_bg: #000059;
 $color_sell: #023a7d;
-$enable-gradients: true;
+
 .topbar {
   nav {
     background-color: $color_bg;
     z-index: 30;
   }
+}
+
+@media (max-width: 575.98px) {
+  .main-content {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+
+.not-available {
+  margin-top: 10%;
+  transform: translate(0, -10%);
+  height: 50vh;
+  text-align: center;
 }
 
 footer {
@@ -22,10 +37,14 @@ p {
 
 .login-menu {
   input.ng-touched {
-      border-color: green;
-      border-style: dashed;
-    }
+    border-color: green;
+    border-style: dashed;
+  }
 
+  input:hover {
+    background-color: $color_sell;
+    color: white;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -41,7 +60,7 @@ p {
     display: block;
   }
   .navbar-collapse.collapsing {
-    height: 100vh !important;
+    height: 100vh;
     margin-right: 50%;
     transition: all 0.6s ease;
     display: block;
@@ -67,11 +86,6 @@ p {
   color: white;
 }
 
-.not-available {
-  margin-top: 10%;
-  transform: translate(0, -10%);
-  height: 50vh;
-  text-align: center;
-}
+
 
 
