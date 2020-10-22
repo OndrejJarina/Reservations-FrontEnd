@@ -1,0 +1,49 @@
+<div>
+  <form #thisForm="ngForm">
+    <div>
+      <div class="form-group">
+        <label class="font-weight-bold" for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          ngModel
+          name="name"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold" for="runtime">Runtime</label>
+        <input
+          id="runtime"
+          class="form-control custom-control"
+          type="number"
+          ngModel
+          name="runtime"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold" for="description">Description</label>
+        <textarea
+          id="description"
+          class="form-control"
+          rows="5"
+          type="text"
+          ngModel
+          name="description"
+          >
+        </textarea>
+      </div>
+
+    </div>
+    <div class="row d-flex justify-content-sm-around">
+      <button class="btn btn-primary col-xs-12 col-sm-6 col-md-4" type="submit" (click)="onPost()" [disabled]="!thisForm.valid || !thisForm.touched">{{buttonMessage}}
+        Film
+      </button>
+      <button class="btn btn-outline-secondary col-xs-12 col-sm-6 col-md-4" (click)="create()">Return to defaults
+      </button>
+    </div>
+  </form>
+</div>
+

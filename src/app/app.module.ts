@@ -7,6 +7,10 @@ import { FilmsComponent } from './films/films.component';
 import { HomeComponent } from './home/home.component';
 import { NotAvailableComponent } from './not-available/not-available.component';
 import { TicketsComponent } from './tickets/tickets.component';
+import { OneFilmComponent } from './films/one-film/one-film.component';
+import { EditFilmComponent } from './films/edit-film/edit-film.component';
+import {FormsModule} from "@angular/forms";
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,15 @@ import { TicketsComponent } from './tickets/tickets.component';
     FilmsComponent,
     HomeComponent,
     NotAvailableComponent,
-    TicketsComponent
+    TicketsComponent,
+    OneFilmComponent,
+    EditFilmComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
