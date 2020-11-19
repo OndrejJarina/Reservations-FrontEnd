@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {FilmsService} from "../films.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FilmsComponent} from "../films.component";
-import {Film} from "../../film";
+import {NgForm} from '@angular/forms';
+import {FilmsService} from '../films.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FilmsComponent} from '../films.component';
+import {Film} from '../../film';
 
 @Component({
   selector: 'app-edit-film',
@@ -18,8 +18,6 @@ export class EditFilmComponent implements OnInit {
 
   film: Film;
 
-  currentId: string;
-
   constructor(private filmsService: FilmsService,
               private currentRoute: ActivatedRoute,
               private router: Router,
@@ -29,39 +27,62 @@ export class EditFilmComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.currentRoute.snapshot.params['id']);
-    const id = this.currentRoute.snapshot.params['id'];
-    this.film = new Film("","",0, "");
+    console.log(this.currentRoute.snapshot.params.id);
+    const id = this.currentRoute.snapshot.params.id;
+    this.film = new Film();
 
-    this.currentId = id;
     if (id === 'new') {
       this.buttonMessage = 'Save';
 
     } else {
       this.buttonMessage = 'Update';
-      this.film = this.filmsService.findFilmById(id);
+      this.filmsService.getDatabaseFilm(id).subscribe(
+        result => {
+          this.film = result;
+          this.create();
+          this.change.detectChanges();
+        }
+      );
     }
 
     setTimeout(() => {
-      this.create()
-    });
+      this.create();
+    }, 500);
   }
 
-
-  create() {
+  create(): void {
     if (this.currentRoute.snapshot.params['id'] != 'new') {
       this.editForm.setValue(
         {
-          name: this.film.name,
+          film_name: this.film.name,
           runtime: this.film.runtime,
           description: this.film.description
         });
     }
   }
 
-  onPost() {
+  onPost(): void {
+    this.film.name = this.editForm.value.film_name;
+    this.film.runtime = this.editForm.value.runtime;
+    this.film.description = this.editForm.value.description;
 
+    console.log(JSON.stringify(this.film));
+    if (this.currentRoute.snapshot.params.id === 'new') {
 
-    this.router.navigate(['./films']), {relativeTo: this.currentRoute, queryParamsHandling: 'preserve'};
+      this.filmsService.newFilm(this.film).subscribe(() => {
+          this.filmsComponent.ngOnInit();
+          this.change.detectChanges();
+        this.router.navigate(['./films']), {relativeTo: this.currentRoute, queryParamsHandling: 'preserve'};
+
+        }
+      );
+    } else {
+      this.filmsService.updateFilm(this.film).subscribe(() => {
+        this.filmsComponent.ngOnInit();
+        this.change.detectChanges();
+        this.router.navigate(['..']), {relativeTo: this.currentRoute.data, queryParamsHandling: 'preserve'};
+
+      });
+    }
   }
 }

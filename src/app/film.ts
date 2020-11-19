@@ -1,13 +1,14 @@
 export class Film {
 
-  constructor(private _id: string,
-              private _name: string,
-              private _runtime: number,
-              private _description: string) {
-  }
+
+  private _id: string;
+  private _name: string;
+  private _runtime: number;
+  private _description: string;
+
 
   get description(): string {
-    return this._description;
+    return this.description;
   }
 
   set description(value: string) {
@@ -37,4 +38,13 @@ export class Film {
   set runtime(value: number) {
     this._runtime = value;
   }
+
+  public toJSON() {
+    return {
+      name: this._name,
+      runtime: this._runtime,
+      description: this._description
+    };
+  }
+
 }

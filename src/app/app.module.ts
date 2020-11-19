@@ -11,6 +11,7 @@ import { OneFilmComponent } from './films/one-film/one-film.component';
 import { EditFilmComponent } from './films/edit-film/edit-film.component';
 import {FormsModule} from "@angular/forms";
 import { UserLoginComponent } from './user-login/user-login.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
