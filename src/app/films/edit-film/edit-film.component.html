@@ -11,9 +11,9 @@
           step="1"
           ngModel
           required
-          [class.is-invalid]="film_name.touched && film_name.value.length < 3"
-          [minLength]="3"
-          [class.is-valid]="film_name.touched && film_name.value.length >= 3"
+          [class.is-invalid]="film_name.touched && film_name.value.length < 1"
+          [minLength]="1"
+          [class.is-valid]="film_name.touched && film_name.value.length >= 1"
           #film_name="ngModel"
         >
       </div>
@@ -43,6 +43,10 @@
           ngModel
           name="description"
           required
+          [class.is-invalid]="description.touched && description.value.length < 1"
+          [minLength]="1"
+          [class.is-valid]="description.touched && description.value.length >= 1"
+          #description="ngModel"
           >
         </textarea>
       </div>

@@ -80,7 +80,9 @@ export class EditFilmComponent implements OnInit {
       this.filmsService.updateFilm(this.film).subscribe(() => {
         this.filmsComponent.ngOnInit();
         this.change.detectChanges();
-        this.router.navigate(['..']), {relativeTo: this.currentRoute.data, queryParamsHandling: 'preserve'};
+
+        let navigation = "./films/" + this.currentRoute.snapshot.params.id;
+        this.router.navigate([navigation]), {relativeTo: this.currentRoute.data, queryParamsHandling: 'preserve'};
 
       });
     }
