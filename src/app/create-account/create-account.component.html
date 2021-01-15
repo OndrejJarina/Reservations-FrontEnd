@@ -1,32 +1,75 @@
-<div class="registration-menu">
-  <div class="container d-flex justify-content-sm-around">
-    <div class="col-md-8">
-      <h1 class="display-2">Create new account</h1>
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 pb-3 text-center">Create Account</h4>
+
       <form>
-        <div class="row">
-          <div class="form-group">
-            <label for="username">E-mail address</label>
-            <input type="email"
-                   ngModel
-                   id="username"
-                   class="form-control"
-                   name="username"
-                   required>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user-circle-o"></i> </span>
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password"
-                   ngModel
-                   id="password"
-                   class="form-control"
-                   name="password"
-                   required>
+          <input name="" class="form-control" placeholder="Full name" type="text">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-calendar-o"></i> </span>
+          </div>
+          <div role="separator" class="dropdown-divider"></div>
+          <div class="input-group-prepend ">
+            <span class="input-group-text "> Date of birth </span>
+          </div>
+
+          <input name="" class="form-control" placeholder="Date of Birth" type="date" id="dateofbirth">
+        </div> <!-- form-group// -->
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-at"></i> </span>
+          </div>
+          <input name="" class="form-control" placeholder="Email address" type="email">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+          </div>
+
+          <input name="" class="form-control" placeholder="Phone number" type="tel">
+        </div> <!-- form-group// -->
+        <div>
+        <div class="form-group input-group">
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="customerRadio" value="option1" checked>
+            <label class="form-check-label" for="customerRadio">
+              Customer
+            </label>
           </div>
           <div class="w-100"></div>
-          <div class="col">col</div>
-          <div class="col">col</div>
-        </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="adminRadio" value="option2">
+            <label class="form-check-label" for="adminRadio">
+              Administrator
+            </label>
+          </div>
+          </div>
+
+        </div> <!-- form-group end.// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+          </div>
+          <input class="form-control" placeholder="Create password" type="password">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+          </div>
+          <input class="form-control" placeholder="Re-enter password" type="password" autocomplete="off">
+        </div> <!-- form-group// -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
+        </div> <!-- form-group// -->
       </form>
-    </div>
-  </div>
+    </article>
+  </div> <!-- card.// -->
 </div>

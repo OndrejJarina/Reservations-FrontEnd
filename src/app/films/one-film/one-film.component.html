@@ -2,9 +2,7 @@
 
   <h2>{{ selected_film.name }}</h2>
 
-
-    <p>Runtime: {{selected_film.runtime}} </p>
-
+  <p>Runtime: {{selected_film.runtime}} </p>
 
   <hr>
   <div class="container">
@@ -12,12 +10,14 @@
     <p>{{selected_film.description}}</p>
   </div>
   <div class="row d-flex justify-content-sm-around">
-
     <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onEdit()">
       Edit {{selected_film.name}}</button>
     <button class="btn btn-outline-danger col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onDelete()">Delete
     </button>
-
+    <div class="w-100"><br></div>
+    <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onNewScreening()"><i
+      class="fa fa-pencil-square-o" aria-hidden="true"></i> Add screening
+    </button>
   </div>
   <hr>
 </div>

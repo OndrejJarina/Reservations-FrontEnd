@@ -12,6 +12,8 @@ import { EditFilmComponent } from './films/edit-film/edit-film.component';
 import {FormsModule} from "@angular/forms";
 import { UserLoginComponent } from './user-login/user-login.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { ScreeningComponent } from './films/screening/screening.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {HttpClientModule} from "@angular/common/http";
     TicketsComponent,
     OneFilmComponent,
     EditFilmComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    CreateAccountComponent,
+    ScreeningComponent
   ],
   imports: [
     BrowserModule,

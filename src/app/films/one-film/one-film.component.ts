@@ -75,4 +75,8 @@ export class OneFilmComponent implements OnInit {
     );
   }
 
+  onNewScreening(){
+    this.router.navigate(['new-screening'], {relativeTo: this.currentRoute, queryParamsHandling: 'preserve'});
+  }
+
 }

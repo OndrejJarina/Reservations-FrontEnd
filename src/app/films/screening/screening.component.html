@@ -1,0 +1,65 @@
+<div>
+  <form (ngSubmit)="onSave()" #thisForm="ngForm">
+    <div>
+      <div class="row">
+        <div class="form-group col-xs-12 col-md-8 col-lg-6">
+          <label class="font-weight-bold " for="date">Date</label>
+          <input
+
+            id="date"
+            class="form-control"
+            type="date"
+            ngModel
+            name="date"
+            required>
+        </div>
+        <div class="form-group col-xs-12 col-md-4 col-lg-6">
+          <label class="font-weight-bold" for="time">Time</label>
+          <input
+
+            id="time"
+            class="form-control"
+            type="time"
+            ngModel
+            name="time"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group col-xs-12">
+        <label for="price" class="font-weight-bold">Price</label>
+        <div class="input-group">
+          <input class="form-control number-button" [min]="minPrice" [max]="maxPrice" step="0.50"
+                 [class.ng-invalid]="price.value<minPrice || price.value>maxPrice" id="price" type="number" ngModel
+                 name="price" required #price>
+          <div class="input-group-append">
+            <div class="input-group-text">€</div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="form-group col-xs-12">
+        <label for="price" class="font-weight-bold">Number of tickets</label>
+        <div class="input-group">
+          <input class="form-control number-button" step="10"
+                 [class.ng-invalid]="count.value<0" id="count" type="number" ngModel
+                 name="count" required #count>
+          <div class="input-group-append">
+            <div class="input-group-text">tickets</div>
+
+          </div>
+        </div>
+        <br>
+
+      </div>
+      <div class="row d-flex justify-content-sm-around">
+        <button class="btn btn-primary col-xs-11 col-sm-8 col-md-6 col-lg-4 col-xl-2" type="submit"
+                [disabled]="!thisForm.valid || !thisForm.touched">Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
