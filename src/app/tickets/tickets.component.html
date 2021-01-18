@@ -1,50 +1,84 @@
+<div *ngIf="saveResult == 1" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Reservation placed successfuly.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf="saveResult == 2"class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Warning!</strong> System was unable to place order.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <div class="container">
-  <h1 class="mb-5 mt-md-5">Ticket prices</h1>
-  <table class="table table-hover">
-    <thead class="bg-custom-light text-light ">
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">12.00 - 17.00</th>
-      <th scope="col">17.00 - 23.00</th>
-      <th scope="col">Weekends</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row" class="bg-light">Children Under 5</th>
-      <td>5€</td>
-      <td>6€</td>
-      <td>5.50€</td>
-    </tr>
-    <tr>
-      <th scope="row" class="bg-light">Students</th>
-      <td>5.50€</td>
-      <td>7€</td>
-      <td>6.50€</td>
-    </tr>
-    <tr>
-      <th scope="row" class="bg-light">Adults</th>
-      <td>6€</td>
-      <td>9€</td>
-      <td>8€</td>
-    </tr>
-    <tr>
-      <th scope="row" class="bg-light">Over 60</th>
-      <td>5€</td>
-      <td>5€</td>
-      <td>4.50€</td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="container">
-    <h1 class="mb-5 mt-md-5">Contact for buying tickets</h1>
-    <div class="row justify">
-      <p class="col-2 text-right"><i class="fa fa-phone"></i></p>
-      <p class="col-8">+ 421 910 312 408</p>
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-9 col-xl-8">
+      <form (ngSubmit)="onConfirm()" #thisForm="ngForm">
+<!--        <div class="form-group">-->
+<!--          <label for="customerSelect">Select customer</label>-->
+<!--          <select class="form-control custom-select" name="customerSelect" id="customerSelect"-->
+<!--                  [class.is-invalid]="customerSelect.value === '' && customerSelect.touched"-->
+<!--                  [class.is-valid]="customerSelect.value != ''"-->
+<!--                  ngModel-->
+<!--                  #customerSelect="ngModel">-->
+<!--            <option *ngFor="let customer of customers"-->
+<!--                    [value]="customer.id">{{customer.name + ' ' + customer.surname}}-->
+<!--              ({{customer.email_address}})-->
+<!--            </option>-->
+<!--          </select>-->
+<!--        </div>-->
+        <div class="form-group">
+          <label for="filmSelect">Select film</label>
+          <select (change)="onFilmSelect()" class="form-control custom-select" name="filmSelect" id="filmSelect"
+                  [class.is-invalid]="filmSelect.value === '' && filmSelect.touched"
+                  [class.is-valid]="filmSelect.value != ''"
+                  ngModel
+                  #filmSelect="ngModel">
+            <option *ngFor="let film of films"
+                    [value]="film.id">{{film.name}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dateSelect">Select time and date</label>
+          <select (change)="onDateSelect()" class="form-control custom-select" name="dateSelect" id="dateSelect"
+
+                  [class.is-invalid]="dateSelect.value == '' && dateSelect.touched || !dateSelected && dateSelect.touched"
+                  ngInvalid
+                  [class.is-valid]="dateSelect.value != '' && dateSelected"
+                  [disabled]="filmSelect.invalid || filmSelect.value === ''"
+                  ngModel
+                  #dateSelect="ngModel"
+                  required>
+            <option
+              *ngFor="let screening of screenings"
+              [value]="screening.id">{{toString_date(screening.date_time)}}
+            </option>
+
+          </select>
+          <small *ngIf="!dateSelect.disabled">Price for 1 ticket: {{currentprice}} €</small>
+          <br>
+          <small *ngIf="freeSeats > -2">Free seats: {{freeSeats}}</small>
+        </div>
+        <div class="form-group">
+          <label for="ticketCount">How many tickets?</label>
+          <input class="form-control" type="number" id="ticketCount" min="0" max="freeSeats"
+                 (change)="onTicketCountChange()"
+                 [class.is-invalid]="(ticketCount.value<0 || ticketCount.value>freeSeats) && ticketCount.touched"
+                 [class.is-valid]="(ticketCount.value>0 && ticketCount.value<freeSeats)"
+                 [disabled]="!dateSelect.valid"  ngModel name="ticketCount" #ticketCount="ngModel" required>
+        </div>
+        <div class="row d-flex justify-content-sm-around">
+          <button class="btn btn-outline-primary col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-4" type="submit"
+                  [disabled]="!thisForm.valid || !thisForm.touched ">Confirm order
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="row">
-      <p class="col-2 text-right"><i class="fa fa-envelope"></i></p>
-      <p class="col-8">sales@cinema.com</p>
+    <div class="col-sm-12 col-md-2 col-lg-3 col-xl-4">
+      <h3>Total price</h3>
+      <p>{{totalPrice}} €</p>
     </div>
   </div>
 </div>
