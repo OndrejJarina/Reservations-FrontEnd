@@ -14,6 +14,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ScreeningComponent } from './films/screening/screening.component';
+import { ScreeningTableComponent } from './films/screening-table/screening-table.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ScreeningComponent } from './films/screening/screening.component';
     EditFilmComponent,
     UserLoginComponent,
     CreateAccountComponent,
-    ScreeningComponent
+    ScreeningComponent,
+    ScreeningTableComponent
   ],
   imports: [
     BrowserModule,

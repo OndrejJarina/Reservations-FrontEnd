@@ -14,12 +14,15 @@
       Edit {{selected_film.name}}</button>
     <button class="btn btn-outline-danger col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onDelete()">Delete
     </button>
-    <div class="w-100"><br></div>
+    <div class="w-100">
+  <app-screening-table></app-screening-table>
+    </div>
     <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onNewScreening()"><i
       class="fa fa-pencil-square-o" aria-hidden="true"></i> Add screening
     </button>
   </div>
-  <hr>
+  <br>
+      <hr>
 </div>
 <div class="row d-flex justify-content-sm-around">
   <button class="btn btn-primary col-xs-12 col-sm-4 col-md-6" (click)="onNew()" data-toggle="tooltip"
