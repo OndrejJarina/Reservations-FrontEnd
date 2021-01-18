@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ScreeningComponent } from './films/screening/screening.component';
 import { ScreeningTableComponent } from './films/screening-table/screening-table.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ScreeningTableComponent } from './films/screening-table/screening-table
     UserLoginComponent,
     CreateAccountComponent,
     ScreeningComponent,
-    ScreeningTableComponent
+    ScreeningTableComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,

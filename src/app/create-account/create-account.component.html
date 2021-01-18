@@ -1,14 +1,29 @@
 <div class="container">
+  <div *ngIf="saveResult == 1" class="alert alert-success alert-dismissible fade show" role="alert">
+    User created successfuly!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="saveResult == 2"class="alert alert-danger alert-dismissible fade show" role="alert">
+    User already exists
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
       <h4 class="card-title mt-3 pb-3 text-center">Create Account</h4>
 
-      <form>
+      <form #thisForm="ngForm">
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-user-circle-o"></i> </span>
           </div>
-          <input name="" class="form-control" placeholder="Full name" type="text">
+          <input id="firstname" name="firstname" class="form-control" placeholder="First name" type="text" ngModel
+                 #firstname="ngModel">
+          <input id="lastname" name="lastname" class="form-control" placeholder="Last name" type="text" ngModel
+                 #lastname="ngModel">
         </div> <!-- form-group// -->
         <div class="form-group input-group">
           <div class="input-group-prepend">
@@ -19,38 +34,27 @@
             <span class="input-group-text "> Date of birth </span>
           </div>
 
-          <input name="" class="form-control" placeholder="Date of Birth" type="date" id="dateofbirth">
+          <input name="dateofbirth" class="form-control" placeholder="Date of Birth" type="date" id="dateofbirth"
+                 ngModel
+                 #dateofbirth="ngModel">
         </div> <!-- form-group// -->
 
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-at"></i> </span>
           </div>
-          <input name="" class="form-control" placeholder="Email address" type="email">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-          </div>
-
-          <input name="" class="form-control" placeholder="Phone number" type="tel">
+          <input name="email_address" id="email_address" class="form-control" placeholder="Email address" type="email"
+                 ngModel
+                 #email_address="ngModel">
         </div> <!-- form-group// -->
         <div>
-        <div class="form-group input-group">
+          <div class="form-group input-group">
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="customerRadio" value="option1" checked>
-            <label class="form-check-label" for="customerRadio">
-              Customer
-            </label>
-          </div>
-          <div class="w-100"></div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="adminRadio" value="option2">
-            <label class="form-check-label" for="adminRadio">
-              Administrator
-            </label>
-          </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="adminCheck" name="adminCheck" ngModel
+                     #adminCheck="ngModel">
+              <label class="custom-control-label" for="adminCheck">Set this account as admin</label>
+            </div>
           </div>
 
         </div> <!-- form-group end.// -->
@@ -58,18 +62,30 @@
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-key"></i> </span>
           </div>
-          <input class="form-control" placeholder="Create password" type="password">
+          <input class="form-control" placeholder="Create password" name="password1" id="password1" type="password"
+                 ngModel
+                 #password1="ngModel">
         </div> <!-- form-group// -->
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-key"></i> </span>
           </div>
-          <input class="form-control" placeholder="Re-enter password" type="password" autocomplete="off">
+          <input class="form-control" placeholder="Re-enter password" name="password2" id="password2" type="password"
+                 ngModel
+                 #password2="ngModel">
+          <div class="w-100"></div>
+          <p *ngIf="password2.touched && password1.touched && password2.value != password1.value">Passwords do not match!</p>
         </div> <!-- form-group// -->
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
+          <button type="submit" [disabled]="(password1.value != password2.value)
+          || firstname.value.length==0
+           || lastname.value.length==0
+           ||email_address.value.length==0
+           ||dateofbirth.value.length==0" (click)="onPost()" class="btn btn-primary btn-block"> Create Account
+          </button>
         </div> <!-- form-group// -->
       </form>
+
     </article>
   </div> <!-- card.// -->
 </div>
