@@ -25,8 +25,12 @@
                                                                                 aria-hidden="true"></i> Tickets</a>
         <a class="login-btn nav-item nav-link mr-0 mr-lg-0 ml-1 text-center text-light rounded-lg"
            data-toggle="collapse" data-target=".navbar-collapse.show"
-           routerLinkActive="active bg-light text-dark" routerLink="user-login"><i class="fa fa-user-circle"
+           routerLinkActive="active bg-light text-dark" routerLink="user-login" *ngIf="loggedIn == false"><i class="fa fa-user-circle"
                                                                                    aria-hidden="true"></i></a>
+        <a class="login-btn nav-item nav-link mr-0 mr-lg-0 ml-1 text-center text-light rounded-lg"
+           data-toggle="collapse" data-target=".navbar-collapse.show"
+           routerLinkActive="active bg-light text-dark" routerLink="user-login" *ngIf="loggedIn == true" (click)="onLogout()"><i class="fa fa-sign-out"
+                                                                                                             aria-hidden="true"></i></a>
       </div>
     </nav>
   </div>

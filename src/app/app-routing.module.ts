@@ -10,6 +10,7 @@ import {UserLoginComponent} from "./user-login/user-login.component";
 import {CreateAccountComponent} from "./create-account/create-account.component";
 import {ScreeningComponent} from "./films/screening/screening.component";
 import {ScreeningTableComponent} from "./films/screening-table/screening-table.component";
+import {UserprofileComponent} from "./userprofile/userprofile.component";
 
 const allRoutes: Routes = [
   {
@@ -28,6 +29,9 @@ const allRoutes: Routes = [
   },
   {
     path: 'home', component: HomeComponent
+  },
+  {
+    path: 'profile', component: UserprofileComponent
   },
   {
     path: '', redirectTo: '/home', pathMatch: "full"
