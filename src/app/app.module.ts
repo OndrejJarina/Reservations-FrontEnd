@@ -11,11 +11,12 @@ import { OneFilmComponent } from './films/one-film/one-film.component';
 import { EditFilmComponent } from './films/edit-film/edit-film.component';
 import {FormsModule} from "@angular/forms";
 import { UserLoginComponent } from './user-login/user-login.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ScreeningComponent } from './films/screening/screening.component';
 import { ScreeningTableComponent } from './films/screening-table/screening-table.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import {InterceptorAuthService} from "./interceptor-auth.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,11 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorAuthService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

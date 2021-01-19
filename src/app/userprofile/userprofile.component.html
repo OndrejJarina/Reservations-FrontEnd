@@ -7,3 +7,21 @@
   </div>
 </div>
 </div>
+<br>
+<h3>My tickets</h3>
+<table class="table table-hover">
+  <thead class="bg-custom-light text-light ">
+  <tr>
+    <th scope="col">Date</th>
+    <th scope="col">Time</th>
+    <th scope="col">Number of tickets</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr  *ngFor="let ticket of tickets">
+    <td>{{ticket.id}}</td>
+    <td>{{ticket.count}}</td>
+  </tr>
+
+  </tbody>
+</table>

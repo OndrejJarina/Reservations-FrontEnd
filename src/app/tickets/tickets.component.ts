@@ -65,7 +65,6 @@ export class TicketsComponent implements OnInit {
       screening.id == this.ticketForm.form.value.dateSelect;
       this.currentprice = screening.price;
     });
-  //  this.getFreeSeats();
   }
 
 
@@ -99,20 +98,6 @@ export class TicketsComponent implements OnInit {
      )
   }
 
-  //
-  // private getFreeSeats() {
-  //
-  //   this.theaterService.getTheater(this.currentScreeningHallId).subscribe(result => {
-  //     this.freeSeats = result.number_of_seats;
-  //   });
-  //
-  //   this.theaterService.getFreeSeats(this.currentScreeningHallId, this.ticketForm.form.value.dateSelect).subscribe(result => {
-  //     console.log('pocet', result);
-  //     if (result != -1) {
-  //       this.freeSeats = result;
-  //     }
-  //   });
-  // }
 
   toString_date(date_time:string):string{
     let year = date_time.slice(0,4);
