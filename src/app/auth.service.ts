@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {Existinguser} from "./existinguser";
 import {catchError, tap} from "rxjs/operators";
 import {BehaviorSubject, Observable, throwError} from "rxjs";
@@ -69,10 +69,14 @@ export class AuthService {
   }
 
   private static handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occured!';
+    let errorMessage = 'An unknown error occurred!';
     if (!errorRes.error || !errorRes.error.error) {
       return throwError(errorMessage);
     }
     return throwError(errorMessage);
+  }
+
+  getUser(email:string):Observable<User>{
+    return this.httpClient.get<User>('http://localhost:8080/api/auth/user/'+email);
   }
 }

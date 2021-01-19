@@ -9,22 +9,22 @@
     <h3>About:</h3>
     <p>{{selected_film.description}}</p>
   </div>
-  <div class="row d-flex justify-content-sm-around">
-    <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onEdit()">
+  <div class="row d-flex justify-content-sm-around" >
+    <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " (click)="onEdit()" *ngIf="user_type==='ADMIN'">
       Edit {{selected_film.name}}</button>
-    <button class="btn btn-outline-danger col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onDelete()">Delete
+    <button class="btn btn-outline-danger col-xs-12 col-sm-4 col-md-3 " (click)="onDelete()" *ngIf="user_type==='ADMIN'">Delete
     </button>
     <div class="w-100">
   <app-screening-table></app-screening-table>
     </div>
-    <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " type="input" (click)="onNewScreening()"><i
+    <button class="btn btn-outline-primary col-xs-12 col-sm-4 col-md-3 " (click)="onNewScreening()" *ngIf="user_type==='ADMIN'"><i
       class="fa fa-pencil-square-o" aria-hidden="true"></i> Add screening
     </button>
   </div>
   <br>
       <hr>
 </div>
-<div class="row d-flex justify-content-sm-around">
+<div class="row d-flex justify-content-sm-around" *ngIf="user_type==='ADMIN'">
   <button class="btn btn-primary col-xs-12 col-sm-4 col-md-6" (click)="onNew()" data-toggle="tooltip"
           data-placement="left" title="Add a new film">New film
   </button>

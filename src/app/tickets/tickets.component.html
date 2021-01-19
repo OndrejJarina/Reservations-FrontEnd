@@ -15,19 +15,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-9 col-xl-8">
       <form (ngSubmit)="onConfirm()" #thisForm="ngForm">
-<!--        <div class="form-group">-->
-<!--          <label for="customerSelect">Select customer</label>-->
-<!--          <select class="form-control custom-select" name="customerSelect" id="customerSelect"-->
-<!--                  [class.is-invalid]="customerSelect.value === '' && customerSelect.touched"-->
-<!--                  [class.is-valid]="customerSelect.value != ''"-->
-<!--                  ngModel-->
-<!--                  #customerSelect="ngModel">-->
-<!--            <option *ngFor="let customer of customers"-->
-<!--                    [value]="customer.id">{{customer.name + ' ' + customer.surname}}-->
-<!--              ({{customer.email_address}})-->
-<!--            </option>-->
-<!--          </select>-->
-<!--        </div>-->
+
         <div class="form-group">
           <label for="filmSelect">Select film</label>
           <select (change)="onFilmSelect()" class="form-control custom-select" name="filmSelect" id="filmSelect"

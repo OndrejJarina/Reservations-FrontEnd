@@ -8,6 +8,8 @@ import {Film} from "../film";
 import {NgForm} from "@angular/forms";
 import {Ticket} from "../ticket";
 import {Result} from "../result";
+import {AuthService} from "../auth.service";
+import {User} from "../user";
 
 @Component({
   selector: 'app-tickets',
@@ -18,7 +20,6 @@ export class TicketsComponent implements OnInit {
 
   @ViewChild('thisForm') ticketForm: NgForm;
 
-  //customers: Customer[] = [];
   films: Film[] = [];
   screenings: Screening[] = [];
   dateSelected: boolean = false;
@@ -26,27 +27,25 @@ export class TicketsComponent implements OnInit {
   totalPrice: number = 0;
   saveResult: Result = Result.NONE;
   freeSeats: number = 200;
+  currentUser: User;
 
   constructor(private router: Router,
               private filmsService: FilmsService,
               private screeningService: ScreeningService,
               private ticketsService: TicketsService,
-              private change: ChangeDetectorRef) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
-  //  this.getCustomers();
     this.getFilms();
 
+    this.authService.user.subscribe(resUser =>{
+      this.authService.getUser(resUser.email).subscribe(result=>{
+        this.currentUser=result;
+      })
+    });
   }
 
-  // private getCustomers() {
-  //   this.customersService.getDatabaseCustomers().subscribe(
-  //     results => {
-  //       this.customers = results;
-  //     }
-  //   );
-  // }
 
   private getFilms() {
     this.filmsService.getDatabaseFilms().subscribe(results => {
@@ -88,16 +87,16 @@ export class TicketsComponent implements OnInit {
     ticket.id = '';
     ticket.screening_id = this.ticketForm.form.value.dateSelect;
     ticket.count = this.ticketForm.form.value.ticketCount;
-    ticket.user_id = this.ticketForm.form.value.customerSelect;
+    ticket.user_id = this.currentUser.id;
     console.log(JSON.stringify(ticket));
-    // this.ticketsService.postReservation(reservation).subscribe(
-    //   () => {
-    //   }, () => {
-    //     this.saveResult = Result.UNSUCCESSFUL;
-    //   }, () => {
-    //     this.saveResult = Result.SUCCESSFUL;
-    //   }
-    // )
+    this.ticketsService.postTicket(ticket).subscribe(
+       () => {
+       }, () => {
+         this.saveResult = Result.UNSUCCESSFUL;
+       }, () => {
+         this.saveResult = Result.SUCCESSFUL;
+       }
+     )
   }
 
   //

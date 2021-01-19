@@ -3,6 +3,7 @@ import {FilmsService} from '../films.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Film} from '../../film';
 import {FilmsComponent} from "../films.component";
+import {AuthService} from "../../auth.service";
 
 @Component({
   selector: 'app-one-film',
@@ -13,6 +14,7 @@ export class OneFilmComponent implements OnInit {
 
   private _selected_film: Film = new Film();
   private _filmInvalid = true;
+  user_type = "NONE";
 
   get filmInvalid(): boolean {
     return this._filmInvalid;
@@ -22,10 +24,15 @@ export class OneFilmComponent implements OnInit {
               private filmsComponent: FilmsComponent,
               private router: Router,
               private currentRoute: ActivatedRoute,
-              private change: ChangeDetectorRef) {
+              private change: ChangeDetectorRef,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
+    this.user_type = "NONE";
+    this.authService.user.subscribe(user=>{
+      this.user_type = user.account_type;
+    })
     console.log(this.currentRoute.snapshot.params.id);
 
     this.currentRoute.params.subscribe(

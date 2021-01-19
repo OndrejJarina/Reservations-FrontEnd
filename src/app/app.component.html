@@ -18,15 +18,21 @@
                data-target=".navbar-collapse.show"
                routerLink="films">Films</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active bg-light text-dark rounded-lg" data-toggle="collapse"
+               data-target=".navbar-collapse.show"
+               routerLink="profile"
+            *ngIf="loggedIn==true">Profile</a>
+          </li>
         </ul>
         <a class="seller-btn nav-item nav-link mr-0 mr-lg-0 text-center text-light rounded-lg" data-toggle="collapse"
            data-target=".navbar-collapse.show"
-           routerLinkActive="active bg-light text-dark" routerLink="tickets"><i class="fa fa-ticket"
+           routerLinkActive="active bg-light text-dark" routerLink="tickets" *ngIf="loggedIn==true"><i class="fa fa-ticket"
                                                                                 aria-hidden="true"></i> Tickets</a>
         <a class="login-btn nav-item nav-link mr-0 mr-lg-0 ml-1 text-center text-light rounded-lg"
            data-toggle="collapse" data-target=".navbar-collapse.show"
            routerLinkActive="active bg-light text-dark" routerLink="user-login" *ngIf="loggedIn == false"><i class="fa fa-user-circle"
-                                                                                   aria-hidden="true"></i></a>
+                                                                                   aria-hidden="true"></i> Login</a>
         <a class="login-btn nav-item nav-link mr-0 mr-lg-0 ml-1 text-center text-light rounded-lg"
            data-toggle="collapse" data-target=".navbar-collapse.show"
            routerLinkActive="active bg-light text-dark" routerLink="user-login" *ngIf="loggedIn == true" (click)="onLogout()"><i class="fa fa-sign-out"
