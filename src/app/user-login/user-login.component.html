@@ -1,27 +1,43 @@
+<div class="container">
+  <div *ngIf="saveResult == 1" class="alert alert-success alert-dismissible fade show" role="alert">
+    Logged in successfuly!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="saveResult == 2"class="alert alert-danger alert-dismissible fade show" role="alert">
+    Wrong credentials
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
 <div class="login-menu">
   <div class="container d-flex justify-content-sm-around">
     <div class="col-xs-8 col-md-6 col-md-4">
-      <form>
+      <form #thisForm="ngForm">
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">E-mail</label>
           <input type="text"
-                 ngModel
                  id="username"
                  class="form-control"
                  name="username"
-                 required>
+                 required
+                 ngModel
+                 #username="ngModel">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password"
-                 ngModel
                  id="password"
                  class="form-control"
                  name="password"
-                 required>
+                 required
+                 ngModel
+                 #password="ngModel">
         </div>
         <div class="d-flex justify-content-around pt-2 pt-md-0">
-          <button class="btn btn-primary col-lg-4 col-md-9 col-xs-12 bold" type="submit">
+          <button class="btn btn-primary col-lg-4 col-md-9 col-xs-12 bold" type="submit" (click)="onPost()">
             Login
           </button>
         </div>
